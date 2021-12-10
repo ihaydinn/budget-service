@@ -47,7 +47,11 @@ public class BudgetRestService {
 
         final User updatedUser = service.createUser(userBody);
         return ResponseEntity.ok(updatedUser);
+    }
 
+    @DeleteMapping(value = "user/{uuid}")
+    public ResponseEntity<Boolean> deleteUser(@PathVariable UUID uuid){
+        return ResponseEntity.ok(service.deleteUser(uuid));
     }
 
 }
