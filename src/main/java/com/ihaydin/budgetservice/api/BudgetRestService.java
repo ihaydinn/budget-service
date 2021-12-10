@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 
 @RestController
@@ -32,6 +34,20 @@ public class BudgetRestService {
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User result = service.createUser(user);
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping(value = "/user/{uuid}")
+    public ResponseEntity<User> updateUser(@PathVariable UUID uuid, @RequestBody User user){
+        Optional<User> optionalUser = service.findById(uuid);
+        User userBody = optionalUser.get();
+
+        userBody.setFirstName(user.getFirstName());
+        userBody.setLastName(user.getLastName());
+        userBody.setEmail(user.getEmail());
+
+        final User updatedUser = service.createUser(userBody);
+        return ResponseEntity.ok(updatedUser);
+
     }
 
 }
