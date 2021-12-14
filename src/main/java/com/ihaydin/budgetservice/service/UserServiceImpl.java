@@ -35,5 +35,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-
+    @Override
+    public Boolean deleteUser(UUID uuid) {
+        userRepository.deleteById(uuid);
+        return true;
+    }
 }

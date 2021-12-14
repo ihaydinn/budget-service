@@ -12,4 +12,5 @@ public interface UserService {
     Optional<User> findById(UUID uuid);
     User createUser(User user);
     User updateUser(User user);
+    Boolean deleteUser(UUID uuid);
 }
