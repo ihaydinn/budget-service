@@ -18,5 +18,8 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private int age;
+    private String userName;
+    private String phoneNumber;
     private String email;
 }
