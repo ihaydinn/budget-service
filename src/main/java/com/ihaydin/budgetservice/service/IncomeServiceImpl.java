@@ -32,7 +32,7 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     public Income updateIncome(Income income) {
-        return null;
+        return incomeRepository.save(income);
     }
 
     @Override
