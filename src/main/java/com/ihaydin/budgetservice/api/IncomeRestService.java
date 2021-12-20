@@ -58,4 +58,10 @@ public class IncomeRestService {
 
     }
 
+    @DeleteMapping(value = "/income/{uuid}")
+    public ResponseEntity<Boolean> deleteIncome(@PathVariable UUID uuid){
+        return ResponseEntity.ok(incomeService.deleteIncome(uuid));
+    }
+
+
 }
