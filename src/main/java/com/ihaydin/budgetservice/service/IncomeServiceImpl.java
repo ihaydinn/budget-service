@@ -22,7 +22,7 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     public Optional<Income> findById(UUID uuid) {
-        return Optional.empty();
+        return incomeRepository.findById(uuid);
     }
 
     @Override
