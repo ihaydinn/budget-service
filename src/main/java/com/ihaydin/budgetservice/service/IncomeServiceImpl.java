@@ -37,6 +37,7 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     public Boolean deleteIncome(UUID uuid) {
-        return null;
+        incomeRepository.deleteById(uuid);
+        return true;
     }
 }
