@@ -39,4 +39,23 @@ public class IncomeRestService {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping(value = "/income/{uuid}")
+    public ResponseEntity<Income> updateIncome(@PathVariable UUID uuid, @RequestBody Income income){
+        Optional<Income> optionalIncome = incomeService.findById(uuid);
+        Income incomeModel = null;
+        if (optionalIncome.isPresent()){
+            incomeModel = optionalIncome.get();
+        }
+        assert incomeModel != null;
+        incomeModel.setCategory(income.getCategory());
+        incomeModel.setBankName(income.getBankName());
+        incomeModel.setDescription(income.getDescription());
+        incomeModel.setDate(income.getDate());
+        incomeModel.setPrice(income.getPrice());
+
+        final Income updatedIncome = incomeService.createIncome(incomeModel);
+        return ResponseEntity.ok(updatedIncome);
+
+    }
+
 }
