@@ -4,9 +4,7 @@ import com.ihaydin.budgetservice.model.Income;
 import com.ihaydin.budgetservice.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,12 @@ public class IncomeRestService {
     public ResponseEntity<List<Income>> getAllIncomes(){
         List<Income> incomeList = incomeService.findAll();
         return ResponseEntity.ok(incomeList);
+    }
 
+    @PostMapping(value = "/incomes")
+    public ResponseEntity<Income> createIncome(@RequestBody Income income){
+        Income result = incomeService.createIncome(income);
+        return ResponseEntity.ok(result);
     }
 
 }
