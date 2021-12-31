@@ -38,4 +38,23 @@ public class ExpenseRestController {
         Expense result = expenseService.createExpense(expense);
         return ResponseEntity.ok(result);
     }
+
+    @PutMapping(value = "/expense/{id}")
+    public ResponseEntity<Expense> updateIncome(@PathVariable Long id, @RequestBody Expense expense){
+        Optional<Expense> optionalExpense = expenseService.findById(id);
+        Expense expenseModel = null;
+        if (optionalExpense.isPresent()){
+            expenseModel = optionalExpense.get();
+        }
+        assert expenseModel != null;
+        expenseModel.setCategory(expense.getCategory());
+        expenseModel.setBankName(expense.getBankName());
+        expenseModel.setDescription(expense.getDescription());
+        expenseModel.setDate(expense.getDate());
+        expenseModel.setPrice(expense.getPrice());
+
+        final Expense updatedExpense = expenseService.updateExpense(expenseModel);
+        return ResponseEntity.ok(updatedExpense);
+
+    }
 }
