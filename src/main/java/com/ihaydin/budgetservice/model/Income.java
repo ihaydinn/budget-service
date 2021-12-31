@@ -9,17 +9,17 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_income")
+public class Income {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String userName;
-    private String phoneNumber;
-    private String email;
+    private String category;
+    private String bankName;
+    private String description;
+    private String price;
+    private long date;
+
 }
