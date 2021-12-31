@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface ExpenseService {
     List<Expense> findAll();
     Optional<Expense> findById(Long id);
+    Expense createExpense(Expense expense);
 
 }
