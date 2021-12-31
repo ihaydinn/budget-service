@@ -10,5 +10,6 @@ public interface ExpenseService {
     Optional<Expense> findById(Long id);
     Expense createExpense(Expense expense);
     Expense updateExpense(Expense expense);
+    Boolean deleteExpense(Long id);
 
 }

@@ -57,4 +57,9 @@ public class ExpenseRestController {
         return ResponseEntity.ok(updatedExpense);
 
     }
+
+    @DeleteMapping(value = "/expense/{id}")
+    public ResponseEntity<Boolean> deleteExpense(@PathVariable Long id){
+        return ResponseEntity.ok(expenseService.deleteExpense(id));
+    }
 }
