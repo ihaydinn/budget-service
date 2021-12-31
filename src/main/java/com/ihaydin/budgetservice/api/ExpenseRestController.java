@@ -4,10 +4,7 @@ import com.ihaydin.budgetservice.model.Expense;
 import com.ihaydin.budgetservice.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,5 +31,11 @@ public class ExpenseRestController {
         }
 
         return ResponseEntity.ok(expenseModel);
+    }
+
+    @PostMapping(value = "/expenses")
+    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense) {
+        Expense result = expenseService.createExpense(expense);
+        return ResponseEntity.ok(result);
     }
 }
