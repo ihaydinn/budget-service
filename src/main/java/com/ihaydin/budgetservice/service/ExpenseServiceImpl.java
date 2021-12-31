@@ -34,4 +34,10 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseRepository.save(expense);
     }
 
+    @Override
+    public Boolean deleteExpense(Long id) {
+        expenseRepository.deleteById(id);
+        return true;
+    }
+
 }
