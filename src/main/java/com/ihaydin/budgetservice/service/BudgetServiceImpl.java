@@ -33,4 +33,10 @@ public class BudgetServiceImpl implements BudgetService{
     public Budget updateBudget(Budget budget) {
         return budgetRepository.save(budget);
     }
+
+    @Override
+    public Boolean deleteBudget(Long id) {
+        budgetRepository.deleteById(id);
+        return true;
+    }
 }
