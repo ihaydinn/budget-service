@@ -10,4 +10,5 @@ public interface BudgetService {
     Optional<Budget> findById(Long id);
     Budget createBudget(Budget budget);
     Budget updateBudget(Budget budget);
+    Boolean deleteBudget(Long id);
 }
