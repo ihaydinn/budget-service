@@ -24,4 +24,9 @@ public class BankServiceImpl implements BankService {
     public Optional<Bank> findById(Long id) {
         return bankRepository.findById(id);
     }
+
+    @Override
+    public Bank createBank(Bank bank) {
+        return bankRepository.save(bank);
+    }
 }
