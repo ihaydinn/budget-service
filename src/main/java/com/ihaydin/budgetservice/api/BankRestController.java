@@ -36,6 +36,22 @@ public class BankRestController {
     public ResponseEntity<Bank> createBank(@RequestBody Bank bank) {
         Bank result = bankService.createBank(bank);
         return ResponseEntity.ok(result);
+    }
 
+    @PutMapping("/bank/{id}")
+    public ResponseEntity<Bank> updateBank(@PathVariable Long id, @RequestBody Bank bank){
+        Optional<Bank> optionalBank = bankService.findById(id);
+        Bank bankModel = null;
+
+        if (optionalBank.isPresent()){
+            bankModel = optionalBank.get();
+        }
+        assert bankModel != null;
+
+        bankModel.setBankName(bank.getBankName());
+        bankModel.setTotalAmount(bank.getTotalAmount());
+
+        final Bank updateBank = bankService.updateBank(bankModel);
+        return ResponseEntity.ok(updateBank);
     }
 }

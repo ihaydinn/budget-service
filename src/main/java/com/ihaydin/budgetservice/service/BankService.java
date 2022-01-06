@@ -9,4 +9,5 @@ public interface BankService {
     List<Bank> findAll();
     Optional<Bank> findById(Long id);
     Bank createBank(Bank bank);
+    Bank updateBank(Bank bank);
 }
