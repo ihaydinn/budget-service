@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface BudgetService {
     List<Budget> findAll();
     Optional<Budget> findById(Long id);
+    Budget createBudget(Budget budget);
 }
