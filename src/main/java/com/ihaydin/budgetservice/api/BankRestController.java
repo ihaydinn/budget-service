@@ -4,10 +4,7 @@ import com.ihaydin.budgetservice.model.Bank;
 import com.ihaydin.budgetservice.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,18 +17,25 @@ public class BankRestController {
     private BankService bankService;
 
     @GetMapping("/banks")
-    public ResponseEntity<List<Bank>> getAllBanks(){
+    public ResponseEntity<List<Bank>> getAllBanks() {
         List<Bank> bankList = bankService.findAll();
         return ResponseEntity.ok(bankList);
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<Bank> getSingleBank(@PathVariable Long id){
+    public ResponseEntity<Bank> getSingleBank(@PathVariable Long id) {
         Optional<Bank> optionalBank = bankService.findById(id);
         Bank bankModel = null;
-        if (optionalBank.isPresent()){
+        if (optionalBank.isPresent()) {
             bankModel = optionalBank.get();
         }
         return ResponseEntity.ok(bankModel);
+    }
+
+    @PostMapping("/banks")
+    public ResponseEntity<Bank> createBank(@RequestBody Bank bank) {
+        Bank result = bankService.createBank(bank);
+        return ResponseEntity.ok(result);
+
     }
 }
