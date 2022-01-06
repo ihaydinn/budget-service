@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BankServiceImpl implements BankService {
@@ -17,5 +18,10 @@ public class BankServiceImpl implements BankService {
     @Override
     public List<Bank> findAll() {
         return bankRepository.findAll();
+    }
+
+    @Override
+    public Optional<Bank> findById(Long id) {
+        return bankRepository.findById(id);
     }
 }
