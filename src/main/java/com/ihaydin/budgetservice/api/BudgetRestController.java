@@ -4,10 +4,7 @@ import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +30,12 @@ public class BudgetRestController {
             budgetModel = budgetId.get();
         }
         return ResponseEntity.ok(budgetModel);
+    }
+
+    @PostMapping("/budgets")
+    public ResponseEntity<Budget> createBudget(@RequestBody Budget budget){
+        Budget result = budgetService.createBudget(budget);
+        return ResponseEntity.ok(result);
     }
 
 
