@@ -10,4 +10,5 @@ public interface BankService {
     Optional<Bank> findById(Long id);
     Bank createBank(Bank bank);
     Bank updateBank(Bank bank);
+    Boolean deleteBank(Long id);
 }

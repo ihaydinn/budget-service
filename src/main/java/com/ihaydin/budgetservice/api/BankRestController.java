@@ -39,11 +39,11 @@ public class BankRestController {
     }
 
     @PutMapping("/bank/{id}")
-    public ResponseEntity<Bank> updateBank(@PathVariable Long id, @RequestBody Bank bank){
+    public ResponseEntity<Bank> updateBank(@PathVariable Long id, @RequestBody Bank bank) {
         Optional<Bank> optionalBank = bankService.findById(id);
         Bank bankModel = null;
 
-        if (optionalBank.isPresent()){
+        if (optionalBank.isPresent()) {
             bankModel = optionalBank.get();
         }
         assert bankModel != null;
@@ -53,5 +53,10 @@ public class BankRestController {
 
         final Bank updateBank = bankService.updateBank(bankModel);
         return ResponseEntity.ok(updateBank);
+    }
+
+    @DeleteMapping("/bank/{id}")
+    public ResponseEntity<Boolean> deleteBank(@PathVariable Long id) {
+        return ResponseEntity.ok(bankService.deleteBank(id));
     }
 }
