@@ -38,5 +38,23 @@ public class BudgetRestController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/budget/{id}")
+    public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budget){
+        Optional<Budget> optionalBudget = budgetService.findById(id);
+        Budget budgetModel = null;
+        if (optionalBudget.isPresent()){
+            budgetModel = optionalBudget.get();
+        }
+        assert budgetModel != null;
+        budgetModel.setCategory(budget.getCategory());
+        budgetModel.setTargetValue(budget.getTargetValue());
+        budgetModel.setTime(budget.getTime());
+        budgetModel.setActive(budget.isActive());
+
+        final Budget updatedBudget = budgetService.updateBudget(budgetModel);
+        return ResponseEntity.ok(updatedBudget);
+
+    }
+
 
 }
