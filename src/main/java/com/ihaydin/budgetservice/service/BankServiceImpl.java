@@ -29,4 +29,9 @@ public class BankServiceImpl implements BankService {
     public Bank createBank(Bank bank) {
         return bankRepository.save(bank);
     }
+
+    @Override
+    public Bank updateBank(Bank bank) {
+        return bankRepository.save(bank);
+    }
 }
