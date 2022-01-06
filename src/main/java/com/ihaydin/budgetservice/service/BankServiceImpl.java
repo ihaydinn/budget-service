@@ -34,4 +34,10 @@ public class BankServiceImpl implements BankService {
     public Bank updateBank(Bank bank) {
         return bankRepository.save(bank);
     }
+
+    @Override
+    public Boolean deleteBank(Long id) {
+        bankRepository.deleteById(id);
+        return true;
+    }
 }
