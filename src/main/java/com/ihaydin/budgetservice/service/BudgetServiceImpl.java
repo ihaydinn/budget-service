@@ -23,4 +23,9 @@ public class BudgetServiceImpl implements BudgetService{
     public Optional<Budget> findById(Long id) {
         return budgetRepository.findById(id);
     }
+
+    @Override
+    public Budget createBudget(Budget budget) {
+        return budgetRepository.save(budget);
+    }
 }
