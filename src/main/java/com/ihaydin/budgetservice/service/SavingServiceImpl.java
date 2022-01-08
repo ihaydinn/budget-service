@@ -1,6 +1,7 @@
 package com.ihaydin.budgetservice.service;
 
 import com.ihaydin.budgetservice.model.Saving;
+import com.ihaydin.budgetservice.repository.SavingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,10 @@ import java.util.List;
 public class SavingServiceImpl implements SavingService{
 
     @Autowired
-    SavingService savingService;
+    SavingRepository savingRepository;
 
     @Override
     public List<Saving> findAll() {
-        return savingService.findAll();
+        return savingRepository.findAll();
     }
 }
