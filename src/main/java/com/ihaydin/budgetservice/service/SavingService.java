@@ -13,4 +13,5 @@ public interface SavingService {
     List<Saving> findAll();
     Optional<Saving> findById(Long id);
     Saving createSaving(Saving saving);
+    Saving updateSaving(Saving saving);
 }

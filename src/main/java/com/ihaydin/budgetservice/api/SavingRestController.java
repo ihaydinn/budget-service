@@ -42,4 +42,18 @@ public class SavingRestController {
         Saving result = savingService.createSaving(saving);
         return ResponseEntity.ok(result);
     }
+
+    @PutMapping("/saving/{id}")
+    public ResponseEntity<Saving> updateSaving(@PathVariable Long id, @RequestBody Saving saving){
+        Optional<Saving> savingId = savingService.findById(id);
+        Saving savingModel = null;
+        if (savingId.isPresent()){
+            savingModel = savingId.get();
+        }
+        assert savingModel != null;
+        savingModel.setAmount(saving.getAmount());
+
+        final Saving updatedSaving = savingService.updateSaving(savingModel);
+        return ResponseEntity.ok(updatedSaving);
+    }
 }
