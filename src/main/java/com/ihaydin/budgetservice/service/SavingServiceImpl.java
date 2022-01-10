@@ -28,4 +28,9 @@ public class SavingServiceImpl implements SavingService{
     public Optional<Saving> findById(Long id) {
         return savingRepository.findById(id);
     }
+
+    @Override
+    public Saving createSaving(Saving saving) {
+        return savingRepository.save(saving);
+    }
 }

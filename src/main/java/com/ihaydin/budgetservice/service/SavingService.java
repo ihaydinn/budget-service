@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface SavingService {
     List<Saving> findAll();
     Optional<Saving> findById(Long id);
+    Saving createSaving(Saving saving);
 }
