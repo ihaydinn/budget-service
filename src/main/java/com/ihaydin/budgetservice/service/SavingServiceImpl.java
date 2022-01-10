@@ -38,4 +38,10 @@ public class SavingServiceImpl implements SavingService{
     public Saving updateSaving(Saving saving) {
         return savingRepository.save(saving);
     }
+
+    @Override
+    public Boolean deleteSaving(Long id) {
+        savingRepository.deleteById(id);
+        return true;
+    }
 }
