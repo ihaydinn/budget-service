@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author ismailhakkiaydin
@@ -21,5 +22,10 @@ public class SavingServiceImpl implements SavingService{
     @Override
     public List<Saving> findAll() {
         return savingRepository.findAll();
+    }
+
+    @Override
+    public Optional<Saving> findById(Long id) {
+        return savingRepository.findById(id);
     }
 }
