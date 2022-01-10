@@ -4,10 +4,7 @@ import com.ihaydin.budgetservice.model.Saving;
 import com.ihaydin.budgetservice.service.SavingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +35,11 @@ public class SavingRestController {
             savingModel = savingId.get();
         }
         return ResponseEntity.ok(savingModel);
+    }
+
+    @PostMapping("/savings")
+    public ResponseEntity<Saving> createSaving(@RequestBody Saving saving){
+        Saving result = savingService.createSaving(saving);
+        return ResponseEntity.ok(result);
     }
 }
