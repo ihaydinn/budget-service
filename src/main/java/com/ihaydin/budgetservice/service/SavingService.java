@@ -14,4 +14,5 @@ public interface SavingService {
     Optional<Saving> findById(Long id);
     Saving createSaving(Saving saving);
     Saving updateSaving(Saving saving);
+    Boolean deleteSaving(Long id);
 }
