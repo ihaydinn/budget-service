@@ -3,6 +3,7 @@ package com.ihaydin.budgetservice.service;
 import com.ihaydin.budgetservice.model.Saving;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author ismailhakkiaydin
@@ -10,4 +11,5 @@ import java.util.List;
  */
 public interface SavingService {
     List<Saving> findAll();
+    Optional<Saving> findById(Long id);
 }
