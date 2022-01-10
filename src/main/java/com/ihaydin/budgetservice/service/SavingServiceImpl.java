@@ -33,4 +33,9 @@ public class SavingServiceImpl implements SavingService{
     public Saving createSaving(Saving saving) {
         return savingRepository.save(saving);
     }
+
+    @Override
+    public Saving updateSaving(Saving saving) {
+        return savingRepository.save(saving);
+    }
 }
