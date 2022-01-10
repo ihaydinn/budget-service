@@ -56,4 +56,9 @@ public class SavingRestController {
         final Saving updatedSaving = savingService.updateSaving(savingModel);
         return ResponseEntity.ok(updatedSaving);
     }
+
+    @DeleteMapping("/saving/{id}")
+    public ResponseEntity<Boolean> deleteSaving(@PathVariable Long id){
+        return ResponseEntity.ok(savingService.deleteSaving(id));
+    }
 }
