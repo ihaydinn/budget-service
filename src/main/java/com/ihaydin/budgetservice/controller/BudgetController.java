@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.service.BudgetService;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class BudgetRestController {
+public class BudgetController {
 
     @Autowired
     private BudgetService budgetService;

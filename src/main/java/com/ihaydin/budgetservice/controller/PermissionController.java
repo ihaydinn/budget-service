@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Permission;
 import com.ihaydin.budgetservice.service.PermissionService;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class PermissionRestController {
+public class PermissionController {
 
     @Autowired
     private PermissionService permissionService;

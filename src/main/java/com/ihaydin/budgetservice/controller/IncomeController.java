@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Income;
 import com.ihaydin.budgetservice.service.IncomeService;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/")
-public class IncomeRestService {
+public class IncomeController {
     @Autowired
     private IncomeService incomeService;
 
