@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
 @RestController
@@ -36,9 +35,9 @@ public class BudgetRestService {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(value = "/user/{uuid}")
-    public ResponseEntity<User> updateUser(@PathVariable UUID uuid, @RequestBody User user){
-        Optional<User> optionalUser = service.findById(uuid);
+    @PutMapping(value = "/user/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+        Optional<User> optionalUser = service.findById(id);
         User userBody = optionalUser.get();
 
         userBody.setFirstName(user.getFirstName());
@@ -49,9 +48,9 @@ public class BudgetRestService {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping(value = "user/{uuid}")
-    public ResponseEntity<Boolean> deleteUser(@PathVariable UUID uuid){
-        return ResponseEntity.ok(service.deleteUser(uuid));
+    @DeleteMapping(value = "user/{id}")
+    public ResponseEntity<Boolean> deleteUser(@PathVariable Long id){
+        return ResponseEntity.ok(service.deleteUser(id));
     }
 
 }

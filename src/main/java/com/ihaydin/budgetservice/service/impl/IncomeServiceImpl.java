@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class IncomeServiceImpl implements IncomeService {
@@ -22,8 +21,8 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public Optional<Income> findById(UUID uuid) {
-        return incomeRepository.findById(uuid);
+    public Optional<Income> findById(Long id) {
+        return incomeRepository.findById(id);
     }
 
     @Override
@@ -37,8 +36,8 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public Boolean deleteIncome(UUID uuid) {
-        incomeRepository.deleteById(uuid);
+    public Boolean deleteIncome(Long id) {
+        incomeRepository.deleteById(id);
         return true;
     }
 }
