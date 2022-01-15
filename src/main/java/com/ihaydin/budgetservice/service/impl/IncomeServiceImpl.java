@@ -1,7 +1,8 @@
-package com.ihaydin.budgetservice.service;
+package com.ihaydin.budgetservice.service.impl;
 
 import com.ihaydin.budgetservice.model.Income;
 import com.ihaydin.budgetservice.repository.IncomeRepository;
+import com.ihaydin.budgetservice.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

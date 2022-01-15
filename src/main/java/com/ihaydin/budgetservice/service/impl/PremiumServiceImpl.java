@@ -1,7 +1,8 @@
-package com.ihaydin.budgetservice.service;
+package com.ihaydin.budgetservice.service.impl;
 
 import com.ihaydin.budgetservice.model.Premium;
 import com.ihaydin.budgetservice.repository.PremiumRepository;
+import com.ihaydin.budgetservice.service.PremiumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
  */
 
 @Service
-public class PremiumServiceImpl implements PremiumService{
+public class PremiumServiceImpl implements PremiumService {
 
     @Autowired
     PremiumRepository premiumRepository;
