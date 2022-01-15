@@ -20,7 +20,7 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionService;
 
-    @GetMapping("/permission/{id}")
+    @GetMapping("/permissions/{id}")
     public ResponseEntity<Permission> getPermission(@PathVariable Long id) {
         Optional<Permission> permissionId = permissionService.findById(id);
         Permission permissionModel = null;
@@ -30,7 +30,7 @@ public class PermissionController {
         return ResponseEntity.ok(permissionModel);
     }
 
-    @PutMapping("permission/{id}")
+    @PutMapping("/permissions/{id}")
     public ResponseEntity<Permission> updatePermission(@PathVariable Long id, @RequestBody Permission permission) {
         Optional<Permission> permissionId = permissionService.findById(id);
         Permission permissionModel = null;

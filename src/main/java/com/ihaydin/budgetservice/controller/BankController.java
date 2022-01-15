@@ -22,7 +22,7 @@ public class BankController {
         return ResponseEntity.ok(bankList);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/banks/{id}")
     public ResponseEntity<Bank> getSingleBank(@PathVariable Long id) {
         Optional<Bank> optionalBank = bankService.findById(id);
         Bank bankModel = null;
@@ -38,7 +38,7 @@ public class BankController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/bank/{id}")
+    @PutMapping("/banks/{id}")
     public ResponseEntity<Bank> updateBank(@PathVariable Long id, @RequestBody Bank bank) {
         Optional<Bank> optionalBank = bankService.findById(id);
         Bank bankModel = null;
@@ -55,7 +55,7 @@ public class BankController {
         return ResponseEntity.ok(updateBank);
     }
 
-    @DeleteMapping("/bank/{id}")
+    @DeleteMapping("/banks/{id}")
     public ResponseEntity<Boolean> deleteBank(@PathVariable Long id) {
         return ResponseEntity.ok(bankService.deleteBank(id));
     }

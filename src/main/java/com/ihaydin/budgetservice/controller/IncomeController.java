@@ -21,7 +21,7 @@ public class IncomeController {
         return ResponseEntity.ok(incomeList);
     }
 
-    @GetMapping(value = "/income/{id}")
+    @GetMapping(value = "/incomes/{id}")
     public ResponseEntity<Income> getSingleIncome(@PathVariable Long id) {
         Optional<Income> incomeId = incomeService.findById(id);
         Income incomeModel = null;
@@ -38,7 +38,7 @@ public class IncomeController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(value = "/income/{id}")
+    @PutMapping(value = "/incomes/{id}")
     public ResponseEntity<Income> updateIncome(@PathVariable Long id, @RequestBody Income income){
         Optional<Income> optionalIncome = incomeService.findById(id);
         Income incomeModel = null;
@@ -57,7 +57,7 @@ public class IncomeController {
 
     }
 
-    @DeleteMapping(value = "/income/{id}")
+    @DeleteMapping(value = "/incomes/{id}")
     public ResponseEntity<Boolean> deleteIncome(@PathVariable Long id){
         return ResponseEntity.ok(incomeService.deleteIncome(id));
     }

@@ -27,7 +27,7 @@ public class SavingController {
         return ResponseEntity.ok(savingList);
     }
 
-    @GetMapping("/saving/{id}")
+    @GetMapping("/savings/{id}")
     public ResponseEntity<Saving> getSingleSaving(@PathVariable Long id){
         Optional<Saving> savingId =  savingService.findById(id);
         Saving savingModel = null;
@@ -43,7 +43,7 @@ public class SavingController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/saving/{id}")
+    @PutMapping("/savings/{id}")
     public ResponseEntity<Saving> updateSaving(@PathVariable Long id, @RequestBody Saving saving){
         Optional<Saving> savingId = savingService.findById(id);
         Saving savingModel = null;
@@ -57,7 +57,7 @@ public class SavingController {
         return ResponseEntity.ok(updatedSaving);
     }
 
-    @DeleteMapping("/saving/{id}")
+    @DeleteMapping("/savings/{id}")
     public ResponseEntity<Boolean> deleteSaving(@PathVariable Long id){
         return ResponseEntity.ok(savingService.deleteSaving(id));
     }

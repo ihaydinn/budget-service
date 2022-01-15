@@ -22,7 +22,7 @@ public class ExpenseController {
         return ResponseEntity.ok(expenseList);
     }
 
-    @GetMapping(value = "/expense/{id}")
+    @GetMapping(value = "/expenses/{id}")
     public ResponseEntity<Expense> getSingleIncome(@PathVariable Long id) {
         Optional<Expense> expenseId = expenseService.findById(id);
         Expense expenseModel = null;
@@ -39,7 +39,7 @@ public class ExpenseController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(value = "/expense/{id}")
+    @PutMapping(value = "/expenses/{id}")
     public ResponseEntity<Expense> updateIncome(@PathVariable Long id, @RequestBody Expense expense){
         Optional<Expense> optionalExpense = expenseService.findById(id);
         Expense expenseModel = null;
@@ -58,7 +58,7 @@ public class ExpenseController {
 
     }
 
-    @DeleteMapping(value = "/expense/{id}")
+    @DeleteMapping(value = "/expenses/{id}")
     public ResponseEntity<Boolean> deleteExpense(@PathVariable Long id){
         return ResponseEntity.ok(expenseService.deleteExpense(id));
     }
