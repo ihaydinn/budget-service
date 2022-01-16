@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.service.BudgetService;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class BudgetRestController {
+public class BudgetController {
 
     @Autowired
     private BudgetService budgetService;
@@ -22,7 +22,7 @@ public class BudgetRestController {
         return ResponseEntity.ok(budgetList);
     }
 
-    @GetMapping("/budget/{id}")
+    @GetMapping("/budgets/{id}")
     public ResponseEntity<Budget> getSingleBudget(@PathVariable Long id) {
         Optional<Budget> budgetId = budgetService.findById(id);
         Budget budgetModel = null;
@@ -38,7 +38,7 @@ public class BudgetRestController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/budget/{id}")
+    @PutMapping("/budgets/{id}")
     public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budget) {
         Optional<Budget> optionalBudget = budgetService.findById(id);
         Budget budgetModel = null;
@@ -56,7 +56,7 @@ public class BudgetRestController {
 
     }
 
-    @DeleteMapping("/budget/{id}")
+    @DeleteMapping("/budgets/{id}")
     public ResponseEntity<Boolean> deleteBudget(@PathVariable Long id) {
         return ResponseEntity.ok(budgetService.deleteBudget(id));
     }

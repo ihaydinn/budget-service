@@ -1,7 +1,8 @@
-package com.ihaydin.budgetservice.service;
+package com.ihaydin.budgetservice.service.impl;
 
 import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.repository.BudgetRepository;
+import com.ihaydin.budgetservice.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BudgetServiceImpl implements BudgetService{
+public class BudgetServiceImpl implements BudgetService {
 
     @Autowired
     private BudgetRepository budgetRepository;

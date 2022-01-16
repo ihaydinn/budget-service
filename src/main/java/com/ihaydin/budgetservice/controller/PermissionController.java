@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Permission;
 import com.ihaydin.budgetservice.service.PermissionService;
@@ -15,12 +15,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class PermissionRestController {
+public class PermissionController {
 
     @Autowired
     private PermissionService permissionService;
 
-    @GetMapping("/permission/{id}")
+    @GetMapping("/permissions/{id}")
     public ResponseEntity<Permission> getPermission(@PathVariable Long id) {
         Optional<Permission> permissionId = permissionService.findById(id);
         Permission permissionModel = null;
@@ -30,7 +30,7 @@ public class PermissionRestController {
         return ResponseEntity.ok(permissionModel);
     }
 
-    @PutMapping("permission/{id}")
+    @PutMapping("/permissions/{id}")
     public ResponseEntity<Permission> updatePermission(@PathVariable Long id, @RequestBody Permission permission) {
         Optional<Permission> permissionId = permissionService.findById(id);
         Permission permissionModel = null;

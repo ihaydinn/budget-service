@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Income;
 import com.ihaydin.budgetservice.service.IncomeService;
@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/")
-public class IncomeRestService {
+public class IncomeController {
     @Autowired
     private IncomeService incomeService;
 
@@ -22,9 +21,9 @@ public class IncomeRestService {
         return ResponseEntity.ok(incomeList);
     }
 
-    @GetMapping(value = "/income/{uuid}")
-    public ResponseEntity<Income> getSingleIncome(@PathVariable UUID uuid) {
-        Optional<Income> incomeId = incomeService.findById(uuid);
+    @GetMapping(value = "/incomes/{id}")
+    public ResponseEntity<Income> getSingleIncome(@PathVariable Long id) {
+        Optional<Income> incomeId = incomeService.findById(id);
         Income incomeModel = null;
         if (incomeId.isPresent()){
             incomeModel = incomeId.get();
@@ -39,9 +38,9 @@ public class IncomeRestService {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(value = "/income/{uuid}")
-    public ResponseEntity<Income> updateIncome(@PathVariable UUID uuid, @RequestBody Income income){
-        Optional<Income> optionalIncome = incomeService.findById(uuid);
+    @PutMapping(value = "/incomes/{id}")
+    public ResponseEntity<Income> updateIncome(@PathVariable Long id, @RequestBody Income income){
+        Optional<Income> optionalIncome = incomeService.findById(id);
         Income incomeModel = null;
         if (optionalIncome.isPresent()){
             incomeModel = optionalIncome.get();
@@ -58,9 +57,9 @@ public class IncomeRestService {
 
     }
 
-    @DeleteMapping(value = "/income/{uuid}")
-    public ResponseEntity<Boolean> deleteIncome(@PathVariable UUID uuid){
-        return ResponseEntity.ok(incomeService.deleteIncome(uuid));
+    @DeleteMapping(value = "/incomes/{id}")
+    public ResponseEntity<Boolean> deleteIncome(@PathVariable Long id){
+        return ResponseEntity.ok(incomeService.deleteIncome(id));
     }
 
 

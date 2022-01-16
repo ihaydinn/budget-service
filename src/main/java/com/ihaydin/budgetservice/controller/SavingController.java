@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Saving;
 import com.ihaydin.budgetservice.service.SavingService;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class SavingRestController {
+public class SavingController {
 
     @Autowired
     private SavingService savingService;
@@ -27,7 +27,7 @@ public class SavingRestController {
         return ResponseEntity.ok(savingList);
     }
 
-    @GetMapping("/saving/{id}")
+    @GetMapping("/savings/{id}")
     public ResponseEntity<Saving> getSingleSaving(@PathVariable Long id){
         Optional<Saving> savingId =  savingService.findById(id);
         Saving savingModel = null;
@@ -43,7 +43,7 @@ public class SavingRestController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/saving/{id}")
+    @PutMapping("/savings/{id}")
     public ResponseEntity<Saving> updateSaving(@PathVariable Long id, @RequestBody Saving saving){
         Optional<Saving> savingId = savingService.findById(id);
         Saving savingModel = null;
@@ -57,7 +57,7 @@ public class SavingRestController {
         return ResponseEntity.ok(updatedSaving);
     }
 
-    @DeleteMapping("/saving/{id}")
+    @DeleteMapping("/savings/{id}")
     public ResponseEntity<Boolean> deleteSaving(@PathVariable Long id){
         return ResponseEntity.ok(savingService.deleteSaving(id));
     }

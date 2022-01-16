@@ -1,4 +1,4 @@
-package com.ihaydin.budgetservice.api;
+package com.ihaydin.budgetservice.controller;
 
 import com.ihaydin.budgetservice.model.Ads;
 import com.ihaydin.budgetservice.service.AdsService;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class AdsRestController {
+public class AdsController {
 
     @Autowired
     private AdsService adsService;
