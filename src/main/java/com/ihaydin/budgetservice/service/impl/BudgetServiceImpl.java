@@ -27,8 +27,9 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Optional<Budget> findById(Long id) {
-        return budgetRepository.findById(id);
+    public Optional<BudgetDto> findById(Long id) {
+        Optional<Budget> budget = budgetRepository.findById(id);
+        return budgetMapper.toOptionalDto(budget);
     }
 
     @Override
@@ -40,8 +41,10 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Budget updateBudget(Budget budget) {
-        return budgetRepository.save(budget);
+    public BudgetDto updateBudget(BudgetDto budgetDto) {
+        Budget budget = budgetMapper.toEntity(budgetDto);
+        Budget updated = budgetRepository.save(budget);
+        return budgetMapper.toDto(updated);
     }
 
     @Override

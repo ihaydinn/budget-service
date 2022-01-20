@@ -24,13 +24,13 @@ public class BudgetController {
     }
 
     @GetMapping("/budgets/{id}")
-    public ResponseEntity<Budget> getSingleBudget(@PathVariable Long id) {
-        Optional<Budget> budgetId = budgetService.findById(id);
-        Budget budgetModel = null;
-        if (budgetId.isPresent()) {
-            budgetModel = budgetId.get();
+    public ResponseEntity<BudgetDto> getSingleBudget(@PathVariable Long id) {
+        Optional<BudgetDto> budgetDtoId = budgetService.findById(id);
+        BudgetDto budgetDtoModel = null;
+        if (budgetDtoId.isPresent()) {
+            budgetDtoModel = budgetDtoId.get();
         }
-        return ResponseEntity.ok(budgetModel);
+        return ResponseEntity.ok(budgetDtoModel);
     }
 
     @PostMapping("/budgets")
@@ -40,19 +40,19 @@ public class BudgetController {
     }
 
     @PutMapping("/budgets/{id}")
-    public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budget) {
-        Optional<Budget> optionalBudget = budgetService.findById(id);
-        Budget budgetModel = null;
-        if (optionalBudget.isPresent()) {
-            budgetModel = optionalBudget.get();
+    public ResponseEntity<BudgetDto> updateBudget(@PathVariable Long id, @RequestBody Budget budget) {
+        Optional<BudgetDto> optionalBudgetDto = budgetService.findById(id);
+        BudgetDto budgetDtoModel = null;
+        if (optionalBudgetDto.isPresent()) {
+            budgetDtoModel = optionalBudgetDto.get();
         }
-        assert budgetModel != null;
-        budgetModel.setCategory(budget.getCategory());
-        budgetModel.setTargetValue(budget.getTargetValue());
-        budgetModel.setTime(budget.getTime());
-        budgetModel.setActive(budget.isActive());
+        assert budgetDtoModel != null;
+        budgetDtoModel.setCategory(budget.getCategory());
+        budgetDtoModel.setTargetValue(budget.getTargetValue());
+        budgetDtoModel.setTime(budget.getTime());
+        budgetDtoModel.setActive(budget.isActive());
 
-        final Budget updatedBudget = budgetService.updateBudget(budgetModel);
+        final BudgetDto updatedBudget = budgetService.updateBudget(budgetDtoModel);
         return ResponseEntity.ok(updatedBudget);
 
     }
