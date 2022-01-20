@@ -1,5 +1,8 @@
 package com.ihaydin.budgetservice.service.impl;
 
+import com.ihaydin.budgetservice.dto.BudgetDto;
+import com.ihaydin.budgetservice.mappers.BudgetMapper;
+import com.ihaydin.budgetservice.mappers.impl.BudgetMapperImpl;
 import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.repository.BudgetRepository;
 import com.ihaydin.budgetservice.service.BudgetService;
@@ -15,9 +18,12 @@ public class BudgetServiceImpl implements BudgetService {
     @Autowired
     private BudgetRepository budgetRepository;
 
+    private static BudgetMapper budgetMapper = BudgetMapperImpl.getInstance();
+
     @Override
-    public List<Budget> findAll() {
-        return budgetRepository.findAll();
+    public List<BudgetDto> findAll() {
+        List<Budget> budgetList = budgetRepository.findAll();
+        return budgetMapper.toListDto(budgetList);
     }
 
     @Override
@@ -26,8 +32,11 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Budget createBudget(Budget budget) {
-        return budgetRepository.save(budget);
+    public BudgetDto createBudget(BudgetDto budgetDto) {
+        Budget budget = budgetMapper.toEntity(budgetDto);
+        Budget saved = budgetRepository.save(budget);
+
+        return budgetMapper.toDto(saved);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
+import com.ihaydin.budgetservice.dto.SavingDto;
 import com.ihaydin.budgetservice.model.Saving;
 import com.ihaydin.budgetservice.service.SavingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,8 @@ public class SavingController {
     }
 
     @PostMapping("/savings")
-    public ResponseEntity<Saving> createSaving(@RequestBody Saving saving){
-        Saving result = savingService.createSaving(saving);
+    public ResponseEntity<SavingDto> createSaving(@RequestBody SavingDto savingDto){
+        SavingDto result = savingService.createSaving(savingDto);
         return ResponseEntity.ok(result);
     }
 
