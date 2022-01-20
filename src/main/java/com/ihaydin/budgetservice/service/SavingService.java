@@ -1,5 +1,7 @@
 package com.ihaydin.budgetservice.service;
 
+import com.ihaydin.budgetservice.dto.BudgetDto;
+import com.ihaydin.budgetservice.dto.SavingDto;
 import com.ihaydin.budgetservice.model.Saving;
 
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.Optional;
 public interface SavingService {
     List<Saving> findAll();
     Optional<Saving> findById(Long id);
-    Saving createSaving(Saving saving);
+    SavingDto createSaving(SavingDto savingDto);
     Saving updateSaving(Saving saving);
     Boolean deleteSaving(Long id);
 }

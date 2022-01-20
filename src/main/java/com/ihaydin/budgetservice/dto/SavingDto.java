@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SavingDto {
+
     private Long id;
 
-    @NotNull
     private String amount;
 }
