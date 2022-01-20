@@ -6,6 +6,7 @@ import com.ihaydin.budgetservice.model.Budget;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author ismailhakkiaydin
@@ -52,5 +53,11 @@ public final class BudgetMapperImpl implements BudgetMapper {
             budgetDtoList.add(this.toDto(budget));
         }
         return budgetDtoList;
+    }
+
+    @Override
+    public Optional<BudgetDto> toOptionalDto(Optional<Budget> optionalBudget) {
+        Budget budget = optionalBudget.get();
+        return Optional.of(this.toDto(budget));
     }
 }

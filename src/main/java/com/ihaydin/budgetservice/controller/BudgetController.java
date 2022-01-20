@@ -24,13 +24,13 @@ public class BudgetController {
     }
 
     @GetMapping("/budgets/{id}")
-    public ResponseEntity<Budget> getSingleBudget(@PathVariable Long id) {
-        Optional<Budget> budgetId = budgetService.findById(id);
-        Budget budgetModel = null;
-        if (budgetId.isPresent()) {
-            budgetModel = budgetId.get();
+    public ResponseEntity<BudgetDto> getSingleBudget(@PathVariable Long id) {
+        Optional<BudgetDto> budgetDtoId = budgetService.findById(id);
+        BudgetDto budgetDtoModel = null;
+        if (budgetDtoId.isPresent()) {
+            budgetDtoModel = budgetDtoId.get();
         }
-        return ResponseEntity.ok(budgetModel);
+        return ResponseEntity.ok(budgetDtoModel);
     }
 
     @PostMapping("/budgets")

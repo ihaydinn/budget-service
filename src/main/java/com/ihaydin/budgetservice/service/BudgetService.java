@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface BudgetService {
     List<BudgetDto> findAll();
-    Optional<Budget> findById(Long id);
+    Optional<BudgetDto> findById(Long id);
     BudgetDto createBudget(BudgetDto budgetDto);
     Budget updateBudget(Budget budget);
     Boolean deleteBudget(Long id);
