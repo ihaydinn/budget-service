@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BudgetService {
-    List<Budget> findAll();
+    List<BudgetDto> findAll();
     Optional<Budget> findById(Long id);
     BudgetDto createBudget(BudgetDto budgetDto);
     Budget updateBudget(Budget budget);

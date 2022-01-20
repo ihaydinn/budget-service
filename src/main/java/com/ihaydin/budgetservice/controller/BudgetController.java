@@ -18,8 +18,8 @@ public class BudgetController {
     private BudgetService budgetService;
 
     @GetMapping("/budgets")
-    public ResponseEntity<List<Budget>> getAllBudgets() {
-        List<Budget> budgetList = budgetService.findAll();
+    public ResponseEntity<List<BudgetDto>> getAllBudgets() {
+        List<BudgetDto> budgetList = budgetService.findAll();
         return ResponseEntity.ok(budgetList);
     }
 

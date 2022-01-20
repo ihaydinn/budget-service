@@ -4,6 +4,9 @@ import com.ihaydin.budgetservice.dto.BudgetDto;
 import com.ihaydin.budgetservice.mappers.BudgetMapper;
 import com.ihaydin.budgetservice.model.Budget;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author ismailhakkiaydin
  * @date 19, January, 2022
@@ -40,5 +43,14 @@ public final class BudgetMapperImpl implements BudgetMapper {
         budgetDto.setTime(budget.getTime());
         budgetDto.setActive(budget.isActive());
         return budgetDto;
+    }
+
+    @Override
+    public List<BudgetDto> toListDto(List<Budget> budgetList) {
+        List<BudgetDto> budgetDtoList = new ArrayList<>(budgetList.size());
+        for (Budget budget : budgetList) {
+            budgetDtoList.add(this.toDto(budget));
+        }
+        return budgetDtoList;
     }
 }

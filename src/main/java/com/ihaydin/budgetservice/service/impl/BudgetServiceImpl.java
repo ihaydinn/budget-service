@@ -21,8 +21,9 @@ public class BudgetServiceImpl implements BudgetService {
     private static BudgetMapper budgetMapper = BudgetMapperImpl.getInstance();
 
     @Override
-    public List<Budget> findAll() {
-        return budgetRepository.findAll();
+    public List<BudgetDto> findAll() {
+        List<Budget> budgetList = budgetRepository.findAll();
+        return budgetMapper.toListDto(budgetList);
     }
 
     @Override
