@@ -1,5 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
+import com.ihaydin.budgetservice.dto.BudgetDto;
 import com.ihaydin.budgetservice.model.Budget;
 import com.ihaydin.budgetservice.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class BudgetController {
     }
 
     @PostMapping("/budgets")
-    public ResponseEntity<Budget> createBudget(@RequestBody Budget budget) {
-        Budget result = budgetService.createBudget(budget);
+    public ResponseEntity<BudgetDto> createBudget(@RequestBody BudgetDto budgetDto) {
+        BudgetDto result = budgetService.createBudget(budgetDto);
         return ResponseEntity.ok(result);
     }
 
