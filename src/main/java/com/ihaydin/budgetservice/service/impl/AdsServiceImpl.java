@@ -22,7 +22,7 @@ public class AdsServiceImpl implements AdsService {
     @Autowired
     AdsRepository adsRepository;
 
-    public static AdsMapper adsMapper = AdsMapperImpl.getInstance();
+    private static AdsMapper adsMapper = AdsMapperImpl.getInstance();
 
     @Override
     public Optional<AdsDto> findById(Long id) {

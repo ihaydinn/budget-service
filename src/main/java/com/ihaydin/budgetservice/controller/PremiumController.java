@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
-import com.ihaydin.budgetservice.model.Premium;
+import com.ihaydin.budgetservice.dto.PremiumDto;
 import com.ihaydin.budgetservice.service.PremiumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,27 +20,27 @@ public class PremiumController {
     @Autowired
     private PremiumService premiumService;
 
-    @RequestMapping("/premium/{id}")
-    public ResponseEntity<Premium> getPremium(@PathVariable Long id){
-        Optional<Premium> premiumId = premiumService.findById(id);
-        Premium premiumModel = null;
-        if (premiumId.isPresent()){
-            premiumModel = premiumId.get();
+    @GetMapping("/premium/{id}")
+    public ResponseEntity<PremiumDto> getPremium(@PathVariable Long id){
+        Optional<PremiumDto> premiumDtoId = premiumService.findById(id);
+        PremiumDto premiumDtoModel = null;
+        if (premiumDtoId.isPresent()){
+            premiumDtoModel = premiumDtoId.get();
         }
-        return ResponseEntity.ok(premiumModel);
+        return ResponseEntity.ok(premiumDtoModel);
     }
 
     @PutMapping("/premium/{id}")
-    public ResponseEntity<Premium> updatePremium(@PathVariable Long id, @RequestBody Premium premium) {
-        Optional<Premium> premiumId = premiumService.findById(id);
-        Premium premiumModel = null;
-        if (premiumId.isPresent()) {
-            premiumModel = premiumId.get();
+    public ResponseEntity<PremiumDto> updatePremium(@PathVariable Long id, @RequestBody PremiumDto premiumDto) {
+        Optional<PremiumDto> premiumDtoId = premiumService.findById(id);
+        PremiumDto premiumDtoModel = null;
+        if (premiumDtoId.isPresent()) {
+            premiumDtoModel = premiumDtoId.get();
         }
-        assert premiumModel != null;
-        premiumModel.setPremium(premium.isPremium());
-        premiumModel.setExpiredTime(premium.getExpiredTime());
-        Premium updatedPremium = premiumService.updatePremium(premiumModel);
+        assert premiumDtoModel != null;
+        premiumDtoModel.setPremium(premiumDto.isPremium());
+        premiumDtoModel.setExpiredTime(premiumDto.getExpiredTime());
+        PremiumDto updatedPremium = premiumService.updatePremium(premiumDtoModel);
         return ResponseEntity.ok(updatedPremium);
     }
 
