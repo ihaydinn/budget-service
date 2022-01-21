@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
-import com.ihaydin.budgetservice.model.Ads;
+import com.ihaydin.budgetservice.dto.AdsDto;
 import com.ihaydin.budgetservice.service.AdsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,26 +21,26 @@ public class AdsController {
     private AdsService adsService;
 
     @GetMapping("/ads/{id}")
-    public ResponseEntity<Ads> getAds(@PathVariable Long id){
-        Optional<Ads> adsId = adsService.findById(id);
-        Ads adsModel = null;
-        if (adsId.isPresent()){
-            adsModel = adsId.get();
+    public ResponseEntity<AdsDto> getAds(@PathVariable Long id) {
+        Optional<AdsDto> adsDtoId = adsService.findById(id);
+        AdsDto adsDtoModel = null;
+        if (adsDtoId.isPresent()) {
+            adsDtoModel = adsDtoId.get();
         }
-        return ResponseEntity.ok(adsModel);
+        return ResponseEntity.ok(adsDtoModel);
     }
 
     @PutMapping("/ads/{id}")
-    public ResponseEntity<Ads> updateAds(@PathVariable Long id, @RequestBody Ads ads){
-        Optional<Ads> adsId = adsService.findById(id);
-        Ads adsModel = null;
-        if (adsId.isPresent()){
-            adsModel = adsId.get();
+    public ResponseEntity<AdsDto> updateAds(@PathVariable Long id, @RequestBody AdsDto adsDto) {
+        Optional<AdsDto> adsDtoId = adsService.findById(id);
+        AdsDto adsDtoModel = null;
+        if (adsDtoId.isPresent()) {
+            adsDtoModel = adsDtoId.get();
         }
-        assert adsModel != null;
-        adsModel.setNoAds(ads.isNoAds());
+        assert adsDtoModel != null;
+        adsDtoModel.setNoAds(adsDto.isNoAds());
 
-        Ads updatedAds = adsService.updateAds(adsModel);
+        AdsDto updatedAds = adsService.updateAds(adsDtoModel);
         return ResponseEntity.ok(updatedAds);
     }
 
