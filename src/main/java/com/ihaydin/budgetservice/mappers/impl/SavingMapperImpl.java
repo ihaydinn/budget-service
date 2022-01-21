@@ -4,12 +4,16 @@ import com.ihaydin.budgetservice.dto.SavingDto;
 import com.ihaydin.budgetservice.mappers.SavingMapper;
 import com.ihaydin.budgetservice.model.Saving;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 /**
  * @author ismailhakkiaydin
  * @date 20, January, 2022
  */
 
-public class SavingMapperImpl implements SavingMapper {
+public final class SavingMapperImpl implements SavingMapper {
 
     public static SavingMapperImpl instance = new SavingMapperImpl();
 
@@ -34,5 +38,20 @@ public class SavingMapperImpl implements SavingMapper {
         savingDto.setId(saving.getId());
         savingDto.setAmount(saving.getAmount());
         return savingDto;
+    }
+
+    @Override
+    public List<SavingDto> toListDto(List<Saving> savingList) {
+        List<SavingDto> savingDtoList = new ArrayList<>(savingList.size());
+        for (Saving saving : savingList) {
+            savingDtoList.add(this.toDto(saving));
+        }
+        return savingDtoList;
+    }
+
+    @Override
+    public Optional<SavingDto> toOptionalDto(Optional<Saving> savingOptional) {
+        Saving saving = savingOptional.get();
+        return Optional.of(this.toDto(saving));
     }
 }
