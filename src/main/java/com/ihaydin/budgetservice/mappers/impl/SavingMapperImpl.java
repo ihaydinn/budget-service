@@ -46,7 +46,7 @@ public final class SavingMapperImpl implements SavingMapper {
         for (Saving saving : savingList) {
             savingDtoList.add(this.toDto(saving));
         }
-        return null;
+        return savingDtoList;
     }
 
     @Override
