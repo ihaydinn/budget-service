@@ -1,9 +1,7 @@
 package com.ihaydin.budgetservice.mappers;
 
 import com.ihaydin.budgetservice.dto.AdsDto;
-import com.ihaydin.budgetservice.dto.SavingDto;
 import com.ihaydin.budgetservice.model.Ads;
-import com.ihaydin.budgetservice.model.Saving;
 
 import java.util.Optional;
 
