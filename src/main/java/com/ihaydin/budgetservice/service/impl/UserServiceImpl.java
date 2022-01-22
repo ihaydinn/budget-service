@@ -1,5 +1,8 @@
 package com.ihaydin.budgetservice.service.impl;
 
+import com.ihaydin.budgetservice.dto.UserDto;
+import com.ihaydin.budgetservice.mappers.UserMapper;
+import com.ihaydin.budgetservice.mappers.impl.UserMapperImpl;
 import com.ihaydin.budgetservice.model.User;
 import com.ihaydin.budgetservice.repository.UserRepository;
 import com.ihaydin.budgetservice.service.UserService;
@@ -15,24 +18,32 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    private static UserMapper userMapper = UserMapperImpl.getInstance();
+
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDto> findAll() {
+        List<User> userList = userRepository.findAll();
+        return userMapper.toListDto(userList);
     }
 
     @Override
-    public Optional<User> findById(Long id){
-        return userRepository.findById(id);
+    public Optional<UserDto> findById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return userMapper.toOptionalDto(user);
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDto createUser(UserDto userDto) {
+        User user = userMapper.toEntity(userDto);
+        User saved = userRepository.save(user);
+        return userMapper.toDto(saved);
     }
 
     @Override
-    public User updateUser(User user) {
-        return userRepository.save(user);
+    public UserDto updateUser(UserDto userDto) {
+        User user = userMapper.toEntity(userDto);
+        User updated = userRepository.save(user);
+        return userMapper.toDto(updated);
     }
 
     @Override
