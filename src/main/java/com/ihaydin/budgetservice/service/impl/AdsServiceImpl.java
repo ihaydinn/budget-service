@@ -1,5 +1,8 @@
 package com.ihaydin.budgetservice.service.impl;
 
+import com.ihaydin.budgetservice.dto.AdsDto;
+import com.ihaydin.budgetservice.mappers.AdsMapper;
+import com.ihaydin.budgetservice.mappers.impl.AdsMapperImpl;
 import com.ihaydin.budgetservice.model.Ads;
 import com.ihaydin.budgetservice.repository.AdsRepository;
 import com.ihaydin.budgetservice.service.AdsService;
@@ -19,13 +22,18 @@ public class AdsServiceImpl implements AdsService {
     @Autowired
     AdsRepository adsRepository;
 
+    private static AdsMapper adsMapper = AdsMapperImpl.getInstance();
+
     @Override
-    public Optional<Ads> findById(Long id) {
-        return adsRepository.findById(id);
+    public Optional<AdsDto> findById(Long id) {
+        Optional<Ads> ads = adsRepository.findById(id);
+        return adsMapper.toOptionalDto(ads);
     }
 
     @Override
-    public Ads updateAds(Ads ads) {
-        return adsRepository.save(ads);
+    public AdsDto updateAds(AdsDto adsDto) {
+        Ads ads = adsMapper.toEntity(adsDto);
+        Ads updated = adsRepository.save(ads);
+        return adsMapper.toDto(updated);
     }
 }

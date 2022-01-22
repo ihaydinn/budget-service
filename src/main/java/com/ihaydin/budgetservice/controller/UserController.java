@@ -1,7 +1,7 @@
 package com.ihaydin.budgetservice.controller;
 
 
-import com.ihaydin.budgetservice.model.User;
+import com.ihaydin.budgetservice.dto.UserDto;
 import com.ihaydin.budgetservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,32 +24,42 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> viewList = service.findAll();
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        List<UserDto> viewList = service.findAll();
         return ResponseEntity.ok(viewList);
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<UserDto> getSingleSaving(@PathVariable Long id) {
+        Optional<UserDto> userDtoId = service.findById(id);
+        UserDto userDtoBody = null;
+        if (userDtoId.isPresent()) {
+            userDtoBody = userDtoId.get();
+        }
+        return ResponseEntity.ok(userDtoBody);
+    }
+
     @PostMapping(value = "/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User result = service.createUser(user);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+        UserDto result = service.createUser(userDto);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(value = "/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
-        Optional<User> optionalUser = service.findById(id);
-        User userBody = optionalUser.get();
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
+        Optional<UserDto> optionalUser = service.findById(id);
+        UserDto userDtoBody = optionalUser.get();
 
-        userBody.setFirstName(user.getFirstName());
-        userBody.setLastName(user.getLastName());
-        userBody.setEmail(user.getEmail());
+        userDtoBody.setFirstName(userDto.getFirstName());
+        userDtoBody.setLastName(userDto.getLastName());
+        userDtoBody.setEmail(userDto.getEmail());
 
-        final User updatedUser = service.createUser(userBody);
+        final UserDto updatedUser = service.createUser(userDtoBody);
         return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping(value = "/users/{id}")
-    public ResponseEntity<Boolean> deleteUser(@PathVariable Long id){
+    public ResponseEntity<Boolean> deleteUser(@PathVariable Long id) {
         return ResponseEntity.ok(service.deleteUser(id));
     }
 

@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
-import com.ihaydin.budgetservice.model.Expense;
+import com.ihaydin.budgetservice.dto.ExpenseDto;
 import com.ihaydin.budgetservice.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,49 +17,49 @@ public class ExpenseController {
     private ExpenseService expenseService;
 
     @GetMapping(value = "/expenses")
-    public ResponseEntity<List<Expense>> getAllExpense() {
-        List<Expense> expenseList = expenseService.findAll();
-        return ResponseEntity.ok(expenseList);
+    public ResponseEntity<List<ExpenseDto>> getAllExpense() {
+        List<ExpenseDto> expenseDtoList = expenseService.findAll();
+        return ResponseEntity.ok(expenseDtoList);
     }
 
     @GetMapping(value = "/expenses/{id}")
-    public ResponseEntity<Expense> getSingleIncome(@PathVariable Long id) {
-        Optional<Expense> expenseId = expenseService.findById(id);
-        Expense expenseModel = null;
-        if (expenseId.isPresent()){
-            expenseModel = expenseId.get();
+    public ResponseEntity<ExpenseDto> getSingleIncome(@PathVariable Long id) {
+        Optional<ExpenseDto> expenseDtoId = expenseService.findById(id);
+        ExpenseDto expenseDtoModel = null;
+        if (expenseDtoId.isPresent()) {
+            expenseDtoModel = expenseDtoId.get();
         }
 
-        return ResponseEntity.ok(expenseModel);
+        return ResponseEntity.ok(expenseDtoModel);
     }
 
     @PostMapping(value = "/expenses")
-    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense) {
-        Expense result = expenseService.createExpense(expense);
+    public ResponseEntity<ExpenseDto> createExpense(@RequestBody ExpenseDto expenseDto) {
+        ExpenseDto result = expenseService.createExpense(expenseDto);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(value = "/expenses/{id}")
-    public ResponseEntity<Expense> updateIncome(@PathVariable Long id, @RequestBody Expense expense){
-        Optional<Expense> optionalExpense = expenseService.findById(id);
-        Expense expenseModel = null;
-        if (optionalExpense.isPresent()){
-            expenseModel = optionalExpense.get();
+    public ResponseEntity<ExpenseDto> updateIncome(@PathVariable Long id, @RequestBody ExpenseDto expenseDto) {
+        Optional<ExpenseDto> optionalDtoExpense = expenseService.findById(id);
+        ExpenseDto expenseDtoModel = null;
+        if (optionalDtoExpense.isPresent()) {
+            expenseDtoModel = optionalDtoExpense.get();
         }
-        assert expenseModel != null;
-        expenseModel.setCategory(expense.getCategory());
-        expenseModel.setBankName(expense.getBankName());
-        expenseModel.setDescription(expense.getDescription());
-        expenseModel.setDate(expense.getDate());
-        expenseModel.setPrice(expense.getPrice());
+        assert expenseDtoModel != null;
+        expenseDtoModel.setCategory(expenseDto.getCategory());
+        expenseDtoModel.setBankName(expenseDto.getBankName());
+        expenseDtoModel.setDescription(expenseDto.getDescription());
+        expenseDtoModel.setDate(expenseDto.getDate());
+        expenseDtoModel.setPrice(expenseDto.getPrice());
 
-        final Expense updatedExpense = expenseService.updateExpense(expenseModel);
+        final ExpenseDto updatedExpense = expenseService.updateExpense(expenseDtoModel);
         return ResponseEntity.ok(updatedExpense);
 
     }
 
     @DeleteMapping(value = "/expenses/{id}")
-    public ResponseEntity<Boolean> deleteExpense(@PathVariable Long id){
+    public ResponseEntity<Boolean> deleteExpense(@PathVariable Long id) {
         return ResponseEntity.ok(expenseService.deleteExpense(id));
     }
 }

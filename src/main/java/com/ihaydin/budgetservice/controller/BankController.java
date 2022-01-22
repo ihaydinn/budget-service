@@ -1,5 +1,6 @@
 package com.ihaydin.budgetservice.controller;
 
+import com.ihaydin.budgetservice.dto.BankDto;
 import com.ihaydin.budgetservice.model.Bank;
 import com.ihaydin.budgetservice.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,41 +18,41 @@ public class BankController {
     private BankService bankService;
 
     @GetMapping("/banks")
-    public ResponseEntity<List<Bank>> getAllBanks() {
-        List<Bank> bankList = bankService.findAll();
-        return ResponseEntity.ok(bankList);
+    public ResponseEntity<List<BankDto>> getAllBanks() {
+        List<BankDto> bankDtoList = bankService.findAll();
+        return ResponseEntity.ok(bankDtoList);
     }
 
     @GetMapping("/banks/{id}")
-    public ResponseEntity<Bank> getSingleBank(@PathVariable Long id) {
-        Optional<Bank> optionalBank = bankService.findById(id);
-        Bank bankModel = null;
-        if (optionalBank.isPresent()) {
-            bankModel = optionalBank.get();
+    public ResponseEntity<BankDto> getSingleBank(@PathVariable Long id) {
+        Optional<BankDto> optionalDtoBank = bankService.findById(id);
+        BankDto bankDtoModel = null;
+        if (optionalDtoBank.isPresent()) {
+            bankDtoModel = optionalDtoBank.get();
         }
-        return ResponseEntity.ok(bankModel);
+        return ResponseEntity.ok(bankDtoModel);
     }
 
     @PostMapping("/banks")
-    public ResponseEntity<Bank> createBank(@RequestBody Bank bank) {
-        Bank result = bankService.createBank(bank);
+    public ResponseEntity<BankDto> createBank(@RequestBody BankDto bankDto) {
+        BankDto result = bankService.createBank(bankDto);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/banks/{id}")
-    public ResponseEntity<Bank> updateBank(@PathVariable Long id, @RequestBody Bank bank) {
-        Optional<Bank> optionalBank = bankService.findById(id);
-        Bank bankModel = null;
+    public ResponseEntity<BankDto> updateBank(@PathVariable Long id, @RequestBody Bank bank) {
+        Optional<BankDto> optionalDtoBank = bankService.findById(id);
+        BankDto bankDtoModel = null;
 
-        if (optionalBank.isPresent()) {
-            bankModel = optionalBank.get();
+        if (optionalDtoBank.isPresent()) {
+            bankDtoModel = optionalDtoBank.get();
         }
-        assert bankModel != null;
+        assert bankDtoModel != null;
 
-        bankModel.setBankName(bank.getBankName());
-        bankModel.setTotalAmount(bank.getTotalAmount());
+        bankDtoModel.setBankName(bank.getBankName());
+        bankDtoModel.setTotalAmount(bank.getTotalAmount());
 
-        final Bank updateBank = bankService.updateBank(bankModel);
+        final BankDto updateBank = bankService.updateBank(bankDtoModel);
         return ResponseEntity.ok(updateBank);
     }
 
