@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.service;
 
-import com.ihaydin.budgetservice.model.Permission;
+import com.ihaydin.budgetservice.dto.PermissionDto;
 
 import java.util.Optional;
 
@@ -9,6 +9,6 @@ import java.util.Optional;
  * @date 13, January, 2022
  */
 public interface PermissionService {
-    Optional<Permission> findById(Long id);
-    Permission updatePermission(Permission permission);
+    Optional<PermissionDto> findById(Long id);
+    PermissionDto updatePermission(PermissionDto permissionDto);
 }
