@@ -13,7 +13,7 @@ import java.util.Optional;
  * @date 22, January, 2022
  */
 
-public class UserMapperImpl implements UserMapper {
+public final class UserMapperImpl implements UserMapper {
 
     private static UserMapperImpl instance = new UserMapperImpl();
 
