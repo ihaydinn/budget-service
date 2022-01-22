@@ -39,7 +39,7 @@ public final class IncomeMapperImpl implements IncomeMapper {
     @Override
     public IncomeDto toDto(final Income income) {
         IncomeDto incomeDto = new IncomeDto();
-        incomeDto.setId(incomeDto.getId());
+        incomeDto.setId(income.getId());
         incomeDto.setPrice(income.getPrice());
         incomeDto.setDate(income.getDate());
         incomeDto.setDescription(income.getDescription());
