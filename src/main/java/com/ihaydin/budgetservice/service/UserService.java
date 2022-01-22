@@ -1,16 +1,15 @@
 package com.ihaydin.budgetservice.service;
 
 
-import com.ihaydin.budgetservice.model.User;
+import com.ihaydin.budgetservice.dto.UserDto;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UserService {
-    List<User> findAll();
-    Optional<User> findById(UUID uuid);
-    User createUser(User user);
-    User updateUser(User user);
-    Boolean deleteUser(UUID uuid);
+    List<UserDto> findAll();
+    Optional<UserDto> findById(Long id);
+    UserDto createUser(UserDto userDto);
+    UserDto updateUser(UserDto userDto);
+    Boolean deleteUser(Long id);
 }

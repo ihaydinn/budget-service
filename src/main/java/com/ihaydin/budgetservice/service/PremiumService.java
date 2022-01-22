@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.service;
 
-import com.ihaydin.budgetservice.model.Premium;
+import com.ihaydin.budgetservice.dto.PremiumDto;
 
 import java.util.Optional;
 
@@ -9,6 +9,6 @@ import java.util.Optional;
  * @date 13, January, 2022
  */
 public interface PremiumService {
-    Optional<Premium> findById(Long id);
-    Premium updatePremium(Premium premium);
+    Optional<PremiumDto> findById(Long id);
+    PremiumDto updatePremium(PremiumDto premiumDto);
 }

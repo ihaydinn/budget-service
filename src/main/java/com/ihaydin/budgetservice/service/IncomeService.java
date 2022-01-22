@@ -1,15 +1,14 @@
 package com.ihaydin.budgetservice.service;
 
-import com.ihaydin.budgetservice.model.Income;
+import com.ihaydin.budgetservice.dto.IncomeDto;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface IncomeService {
-    List<Income> findAll();
-    Optional<Income> findById(UUID uuid);
-    Income createIncome(Income income);
-    Income updateIncome(Income income);
-    Boolean deleteIncome(UUID uuid);
+    List<IncomeDto> findAll();
+    Optional<IncomeDto> findById(Long id);
+    IncomeDto createIncome(IncomeDto incomeDto);
+    IncomeDto updateIncome(IncomeDto incomeDto);
+    Boolean deleteIncome(Long id);
 }
