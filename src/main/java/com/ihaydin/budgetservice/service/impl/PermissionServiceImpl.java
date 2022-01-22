@@ -1,5 +1,8 @@
 package com.ihaydin.budgetservice.service.impl;
 
+import com.ihaydin.budgetservice.dto.PermissionDto;
+import com.ihaydin.budgetservice.mappers.PermissionMapper;
+import com.ihaydin.budgetservice.mappers.impl.PermissionMapperImpl;
 import com.ihaydin.budgetservice.model.Permission;
 import com.ihaydin.budgetservice.repository.PermissionRepository;
 import com.ihaydin.budgetservice.service.PermissionService;
@@ -19,13 +22,18 @@ public class PermissionServiceImpl implements PermissionService {
     @Autowired
     PermissionRepository permissionRepository;
 
+    private static PermissionMapper permissionMapper = PermissionMapperImpl.getInstance();
+
     @Override
-    public Optional<Permission> findById(Long id) {
-        return permissionRepository.findById(id);
+    public Optional<PermissionDto> findById(Long id) {
+        Optional<Permission> permission = permissionRepository.findById(id);
+        return permissionMapper.toOptionalDto(permission);
     }
 
     @Override
-    public Permission updatePermission(Permission permission) {
-        return permissionRepository.save(permission);
+    public PermissionDto updatePermission(PermissionDto permissionDto) {
+        Permission permission = permissionMapper.toEntity(permissionDto);
+        Permission updated = permissionRepository.save(permission);
+        return permissionMapper.toDto(updated);
     }
 }
