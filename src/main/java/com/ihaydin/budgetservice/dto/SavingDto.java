@@ -1,6 +1,6 @@
 package com.ihaydin.budgetservice.dto;
 
-import com.sun.istack.NotNull;
+import com.ihaydin.budgetservice.model.Budget;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +18,6 @@ public class SavingDto {
     private Long id;
 
     private String amount;
+
+    private Budget budget;
 }

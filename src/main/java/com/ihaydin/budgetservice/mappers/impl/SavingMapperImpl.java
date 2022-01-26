@@ -29,6 +29,7 @@ public final class SavingMapperImpl implements SavingMapper {
         Saving saving = new Saving();
         saving.setId(savingDto.getId());
         saving.setAmount(savingDto.getAmount());
+        saving.setBudget(savingDto.getBudget());
         return saving;
     }
 
@@ -37,6 +38,7 @@ public final class SavingMapperImpl implements SavingMapper {
         SavingDto savingDto = new SavingDto();
         savingDto.setId(saving.getId());
         savingDto.setAmount(saving.getAmount());
+        savingDto.setBudget(saving.getBudget());
         return savingDto;
     }
 

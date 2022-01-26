@@ -1,8 +1,11 @@
 package com.ihaydin.budgetservice.dto;
 
+import com.ihaydin.budgetservice.model.Saving;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author ismailhakkiaydin
@@ -23,5 +26,7 @@ public class BudgetDto {
     private Long time;
 
     private boolean isActive;
+
+    private List<Saving> savings;
 
 }

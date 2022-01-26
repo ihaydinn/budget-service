@@ -32,6 +32,7 @@ public final class BudgetMapperImpl implements BudgetMapper {
         budget.setTargetValue(budgetDto.getTargetValue());
         budget.setTime(budgetDto.getTime());
         budget.setActive(budgetDto.isActive());
+        budget.setSavings(budgetDto.getSavings());
         return budget;
     }
 
@@ -43,6 +44,7 @@ public final class BudgetMapperImpl implements BudgetMapper {
         budgetDto.setTargetValue(budget.getTargetValue());
         budgetDto.setTime(budget.getTime());
         budgetDto.setActive(budget.isActive());
+        budgetDto.setSavings(budget.getSavings());
         return budgetDto;
     }
 
